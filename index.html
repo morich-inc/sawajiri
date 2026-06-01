@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>澤尻宰紀 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>澤尻宰紀 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. 株式会社トーガシ</a>
+  <a href="#k2">2. 株式会社IPPO（イッポ）</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">管理部門オープンポジション</span><span class="badge badge-blue">未上場（N-4以前）</span></div>
+  <div class="co-name">株式会社トーガシ</div>
+  <div class="co-url"><a href="https://www.tohgashi.co.jp" target="_blank">https://www.tohgashi.co.jp</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都中央区新富2-14-4　住友新富ビル 2F</td></tr><tr><th>設立</th><td>1965年創業、2000年法人化</td></tr><tr><th>上場区分</th><td>未上場（N-4以前）</td></tr><tr><th>売上高</th><td>67億円（2025年1月期末予定）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <p>IPO準備中の急成長イベントプロデュース企業での管理部門強化</p>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">1965年に創業し、2000年に法人化された会社です。展示会やイベントの企画から設計、施工、そして運営までをすべて自社で手がけている、まさに"総合イベントプロデュース企業"と呼べる存在です。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>1965年に創業し、2000年に法人化された会社です。展示会やイベントの企画から設計、施工、そして運営までをすべて自社で手がけている、まさに"総合イベントプロデュース企業"と呼べる存在です。年間3,000件以上のイベントを手がけていて、2025年1月期末には売上高67億円（23年60億➡24年63億円）を達成。その実績からも、堅実かつ着実に成長を続けている様子が伺えます。</p><p>特に注目したいのが、企画から運営までをワンストップで提供できる体制。社内には多くの専門職の方が在籍していて、各職種が密に連携しながらイベントを形にしていく力が、トーガシの大きな強みになっています。たとえば、Web3業界の注目イベント「WebX」や、参加者4万人を超えるビジネスカンファレンス「Climbers 2025」といった大型案件にも関わっており、その実績からも、業界内での評価の高さが感じられます。（就職イベントはほぼ独占）</p><p>現在、今後の株式上場（IPO、現在N-3）を視野に入れながら、社内の管理体制をより一層強化していこうとされています。その中でも、新規事業部門（成長戦略推進室）、経理部門、情報システム部門については、今後の体制づくりに向けて人員の強化が大きなテーマとなっています。</p><p><strong>代表取締役　吉田守克氏</strong><br>1982年に三井物産株式会社へご入社以来、国内外の事業投資や開発を手がけてこられた。情報産業分野では海外スタートアップとのジョイントベンチャー設立に携わるなど、先進的な取り組みに多く関わってこられました。その後、2006年にトーガシへ参画。以来、長く続くイベント施工会社を、単なる"作る会社"から"戦略的にプロデュースする会社"へと変えていく大きな改革をリードされています。最近では、Web3、NFT、バーチャル空間といった新しい技術領域にも積極的に挑戦されており、「展示・イベントの在り方そのものを変えていく」という強いビジョンのもと、これまでの業界常識にとらわれない柔軟かつ革新的な経営スタイルを貫いていらっしゃいます。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 管理部門オープンポジション</div>
+          <div class="job-preview">管理部門において幅広く採用ニーズがございます。ご経験や適性に応じてポジションを提案</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p>管理部門において幅広く採用ニーズがございます。ご経験や適性に応じて、ご経験を活かしていただけそうなポジションを提案させていただきます。</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 基本出社</span><span class="pill">❌ 副業不可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.tohgashi.co.jp" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">コーポレート責任者</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">株式会社IPPO（イッポ）</div>
+  <div class="co-url"><a href="https://ippooffice.co.jp/" target="_blank">https://ippooffice.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都渋谷区道玄坂１丁目１６−３ 渋谷センタープレイス 5階</td></tr><tr><th>設立</th><td>2018年</td></tr><tr><th>従業員数</th><td>50名</td></tr><tr><th>上場区分</th><td>未上場（当面予定なし）</td></tr><tr><th>売上高</th><td>約7億円</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>120％成長を継続する急成長フェーズ</li><li>粗利率100％という高収益モデルを実現</li><li>売上7億円規模まで事業拡大</li><li>累計2,000件以上の居抜き転居実績</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">株式会社IPPOは、スタートアップ・ベンチャーに特化したオフィス移転・退去コンサルティングや、居抜きオフィス情報メディア「ハイッテ」の運営、オフィスBPOを行う不動産テック企業です。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>株式会社IPPOは、スタートアップ・ベンチャーに特化したオフィス移転・退去コンサルティングや、居抜きオフィス情報メディア「ハイッテ」の運営、オフィスBPOを行う不動産テック企業です。「ただの不動産屋ではなく、挑戦者と共に社会に価値あるサービスを生み出したい」という代表の強い思いから2018年に設立されました。同社の最大の強みであり他社との違いは、経営戦略や採用計画までヒアリングし事業成長に伴走する点と、手数料等の情報を全て開示する透明性の高さです。また、原状回復費用や移転の手間を大幅に削減できる「居抜き」での入退去支援を一気通貫で行っています。</p><p>その独自のノウハウと強固な情報網により、毎月200棟近い居抜き物件が集まり、居抜きオフィスのご紹介実績は90%以上。昨年は年間386件の移転を成功に導き、常に120%成長、売上約7億円という圧倒的な実績を誇ります。急成長企業と同じ目線で課題解決に挑める、熱量の高い環境です。</p><p><strong>代表取締役社長　関口 秀人 氏</strong><br>2008年に不動産業界へ入り、2011年に前職となる株式会社クリアビジョンを創業（取締役）。マネーフォワードやメルカリなど、数々の成長企業のオフィス移転を手掛ける。起業家と共に社会に価値あるサービスを生み出し、不動産業界の当たり前を変えたいという志から、2018年に株式会社IPPOを創業し、代表取締役に就任。</p><p><strong>外部資本に依存しない自己資本経営を継続</strong><br>外部資本を入れない完全自己資本で経営を行っています。現在は社員50名の壁を超えるフェーズであり、「社員が誇れる会社を作る」という目標に向け、その過程の選択肢としてIPO（上場）も視野に入れています。</p><p><strong>圧倒的なインセンティブと評価制度</strong><br>成果に対する還元が非常に手厚く、インセンティブを含めて年収5000万円に達するトップセールスも在籍しています。プレイヤーとして圧倒的に稼ぐことも、マネジメント層として組織構築に携わることも可能な環境です。</p><p><strong>裁量とチャンスに溢れたフェーズ</strong><br>現在、次なる成長基盤を作るためにミドルマネージャー層やコーポレート部門の強化を急務としています。組織の急拡大期だからこそ、役割や権限の委譲も含めて大きな裁量を持って活躍できるチャンスが豊富です。</p><p><strong>20代〜30代の若手が多く、フラットで働きやすい社風</strong><br>男女比はほぼ半々で、業界経験不問・人柄重視の採用を行っています。有給の他に夏季・年末年始休暇などもしっかり取得でき、仕事とプライベートのバランスを取りながら全力で成長できる環境が整っています。</p><p><strong>VC・スタートアップとの強固なネットワーク</strong><br>多数のベンチャーキャピタル（VC）と提携しており、日本を牽引する熱量の高いスタートアップ経営陣と直接やり取りをしながら、彼らの事業成長の大きな節目（オフィス移転）を最前線で支援できるやりがいがあります。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 コーポレート責任者（CHRO/Head of Corporate/管理部長クラス）</div>
+          <div class="job-preview">管理体制再設計、50人の壁突破、IPO視野のガバナンス整備を担う責任者ポジション</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>ミッション：</strong>管理体制再設計、予算管理/法務/労務/評価制度統合、50人の壁突破、IPO視野のガバナンス整備、管理会計導入</p><p><strong>フェーズ：</strong>ゼロイチ～再設計～仕組み化（守り強化、攻めとの分業設計）</p><p><strong>主な課題と業務内容：</strong></p><ul><li><strong>制度設計と人事運用の知見不足：</strong>評価制度設計、フィードバック運用、採用基準の定義などで代表が判断基準を持ち切れていない。</li><li><strong>実務2名＋業務委託マネージャー依存：</strong>全体設計・標準化・ツール導入の推進といった「上位設計」が内製化されていない。</li><li><strong>経理・労務は外部委託が中心で内製は限定的。</strong>将来的な内製化意向はあるが、現状は外注活用が基本方針。</li><li><strong>採用戦略再設計：</strong>ミドル営業の要件定義、チャネル別KPI（エージェント、ダイレクト、リファラル、競合転職）の設計・運用、着手金モデルのエージェントマネジメント、LinkedIn運用最適化（DMテンプレ、ABテスト、返信率改善、ランチ面談〜内定のコンバージョン管理）。</li><li><strong>経理・リスク統括力：</strong>月次・決算プロセスの安定化、将来IPO選択肢に向けたガバナンス・内部統制の叩き台（現事業モデルがIPO型でない現実を踏まえ、過剰投資を避ける見極め）。</li><li><strong>ツール導入・運用改善：</strong>既存ツールの棚卸し、要件定義、運用ルール策定、ダッシュボード化（採用ファネル、オン/オフボーディング、評価サイクル、面接SLA等）。</li></ul><p><span class='tag tag-must'>MUST</span> ベンチャー〜ミドルでの管理部門立ち上げ、業務委託ハブ運用、ガバナンス/リスク管理の統合経験</p><p><span class='tag tag-must'>MUST</span> 人事・経理・法務いずれかの深い専門性＋全体統合</p><ul><li>人事（採用・評価・制度）に強みを持ち、経理やリスクまで横断カバーできる広義のコーポレート統括。</li><li>業務委託マネージャー依存の現状を内製化するためのプレイングマネージャー。実務ハンズオンを厭わず、組織設計・プロセス標準化を推進。</li><li>制度設計（等級・評価・報酬・フィードバック運用）の立ち上げ・刷新経験者。採用基準定義・JD整備・面接官訓練・採用広報まで一気通貫で設計。</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 基本出社</span><span class="pill">❌ 副業不可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://ippooffice.co.jp/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが澤尻宰紀 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
